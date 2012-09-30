@@ -5,6 +5,7 @@ MedDb::Application.routes.draw do
   resources :hospitals do
     resources :departments
   end
+  resources :departments, only: [:index, :show]
 
   root :to => 'dashboard#show'
 end

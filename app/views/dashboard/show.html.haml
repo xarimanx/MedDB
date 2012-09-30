@@ -1,8 +1,14 @@
-%h1
-  Hospitals
-%ul
-  - @hospitals.each do |hospital|
+- if current_user.admin?
+  %h1
+    Hospitals
+  %ul
+    - @hospitals.each do |hospital|
+      %li
+        = link_to hospital.name, hospital_path(hospital)
     %li
-      = link_to hospital.name, hospital_path(hospital)
-  %li
-    = link_to "Add hospital", new_hospital_path, class: "btn btn-primary btn-small"
+      = link_to "Add hospital", new_hospital_path, class: "btn btn-primary btn-small"
+- else
+  %ul
+    - current_user.hospital.departments.each do |department|
+      %li
+        = link_to department.name, department_path(department)
