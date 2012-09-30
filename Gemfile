@@ -32,6 +32,12 @@ group :staging do
   gem "whenever", :require => false
 end
 
+gem 'devise'
+gem 'devise-encryptable'
+gem 'exception_notification_rails3', :require => 'exception_notifier'
+
+gem 'execjs'
+
 gem 'rspec'
 
 group :test do
