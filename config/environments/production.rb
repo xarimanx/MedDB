@@ -48,6 +48,21 @@ MedDb::Application.configure do
   # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
   # config.assets.precompile += %w( search.js )
 
+  DOMAIN = 'MedDb.com'
+  PORT = 80
+  SITE_URL = "http://#{DOMAIN}"
+
+  # Email settings
+  ActionMailer::Base.delivery_method = :smtp
+  ActionMailer::Base.smtp_settings = {
+    :address => "localhost",
+    :port => 25,
+    :domain => DOMAIN
+  }
+
+  Rails.application.routes.default_url_options = { :host => "#{DOMAIN}:#{PORT}" } # Fixes issue with Builder not allowing Routes and Url Helper
+  config.action_mailer.default_url_options = { :host => "#{DOMAIN}:#{PORT}" }
+
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false
 

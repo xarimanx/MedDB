@@ -14,10 +14,16 @@ module MedDb
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
-
+    config.app_generators do |g|
+      g.test_framework :rspec, fixture: true, views: false
+      g.integration_tool :rspec, fixture: true, views: true
+      g.template_engine :haml
+    end
     # Custom directories with classes and modules you want to be autoloadable.
     # config.autoload_paths += %W(#{config.root}/extras)
-
+    
+    config.autoload_paths += Dir["#{config.root}/lib/**/"]
+    config.autoload_paths += %W(cron lib/controllers lib/models).map{|p| "#{config.root}/app/#{p}"}
     # Only load the plugins named here, in the order given (default is alphabetical).
     # :all can be used as a placeholder for all plugins not explicitly named.
     # config.plugins = [ :exception_notification, :ssl_requirement, :all ]
@@ -37,7 +43,10 @@ module MedDb
     config.encoding = "utf-8"
 
     # Configure sensitive parameters which will be filtered from the log file.
-    config.filter_parameters += [:password]
+    config.filter_parameters += [:current_password, :password, :password_confirmation]
+    config.to_prepare do
+      Devise::Mailer.layout "email" # email.haml or email.erb
+    end
 
     # Enable escaping HTML in JSON.
     config.active_support.escape_html_entities_in_json = true

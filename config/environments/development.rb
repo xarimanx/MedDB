@@ -34,4 +34,22 @@ MedDb::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+  
+  
+  DOMAIN = 'localhost'
+  PORT = 3000
+  SITE_URL = "http://#{DOMAIN}:#{PORT}"
+
+  # Email settings
+  #ActionMailer::Base.delivery_method = :smtp
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = { :address => "localhost", :port => 1025 }
+  #
+  #ActionMailer::Base.smtp_settings = {
+  #  :address => "server.3.office",
+  #  :port => 25,
+  #  :domain => DOMAIN
+  #}
+  Rails.application.routes.default_url_options = { :host => "#{DOMAIN}:#{PORT}" } # Fixes issue with Builder not allowing Routes and Url Helper
+  config.action_mailer.default_url_options = { :host => "#{DOMAIN}:#{PORT}" }
 end
