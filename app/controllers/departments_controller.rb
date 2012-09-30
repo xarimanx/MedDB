@@ -8,11 +8,11 @@ class DepartmentsController < ApplicationController
   end
 
   def new
-    @department = Hospital.find(params[:hospital_id]).departments.build
+    @department = @hospital.departments.build
   end
 
   def create
-    @department = Hospital.find(params[:hospital_id]).departments.build(params[:department])
+    @department = @hospital.departments.build(params[:department])
     if @department.save
       respond_to do |format|
         format.html { redirect_to [@department.hospital, @department], notice: "The department was successfully created" }
@@ -39,6 +39,9 @@ class DepartmentsController < ApplicationController
   end
 
   private
+  def find_hospital
+    @hospital = Hospital.find(params[:hospital_id])
+  end
 
   def find_department
     @department = Department.find(params[:id])
