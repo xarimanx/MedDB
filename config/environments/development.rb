@@ -36,7 +36,7 @@ MedDb::Application.configure do
   config.assets.debug = true
   
   
-  DOMAIN = 'localhost'
+  DOMAIN = 'lvh.me'
   PORT = 3000
   SITE_URL = "http://#{DOMAIN}:#{PORT}"
 

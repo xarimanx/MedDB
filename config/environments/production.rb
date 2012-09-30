@@ -65,7 +65,12 @@ MedDb::Application.configure do
 
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false
-
+  config.middleware.insert_after ActionDispatch::ShowExceptions, ExceptionNotifier,
+    :email_prefix => "[MedDb Exception] ",
+    :sender_address => %{no-reply@meddb.com},
+    :exception_recipients => %w{xarimanx@gmail.com},
+    # If you want disable mailing of 404 errors, delete next line
+    :ignore_exceptions => []
   # Enable threaded mode
   # config.threadsafe!
 
