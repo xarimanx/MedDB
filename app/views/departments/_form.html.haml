@@ -1,0 +1,9 @@
+= form_for [ department.hospital, department ], html: { class: "form-horizontal" } do |f|
+  = f.error_messages
+  .control-group
+    = f.label :name, class: "control-label"
+    .controls
+      = f.text_field :name
+  .control-group
+    .controls
+      = f.submit submit_text, class: "btn btn-primary btn-small"
