@@ -13,5 +13,7 @@ MedDb::Application.routes.draw do
   end
   resources :rooms, only: [:index, :show]
 
+  resources :users
+
   root :to => 'dashboard#show'
 end

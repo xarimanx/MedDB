@@ -10,7 +10,8 @@
     %li
       = link_to subdivision.name, department_subdivision_path(@department, subdivision)
 
-  %li
-    = link_to "Add subdivision", new_department_subdivision_path(@department), class: "btn btn-primary btn-small"
+= link_to "Add subdivision", new_department_subdivision_path(@department), class: "btn btn-primary btn-small"
 
-= link_to "Back", hospital_path(@department.hospital)
+= link_to "Back", hospital_path(@department.hospital), class: "btn btn-primary btn-small"
+
+= link_to "Add assignment", "#", class: "btn btn-primary btn-small"

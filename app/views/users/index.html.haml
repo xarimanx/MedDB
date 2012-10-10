@@ -1,0 +1,6 @@
+%ul
+  - @users.each do |user|
+    %li 
+      = link_to user.display_name, edit_user_path(user)
+
+= link_to "add user", new_user_path()

@@ -1,0 +1,17 @@
+= form_for user, html: { class: "form-horizontal" } do |f|
+  = f.error_messages
+  .control-group
+    = f.label :first_name, class: "control-label"
+    .controls
+      = f.text_field :first_name
+  .control-group
+    = f.label :middle_name, class: "control-label"
+    .controls
+      = f.text_field :middle_name
+  .control-group
+    = f.label :last_name, class: "control-label"
+    .controls
+      = f.text_field :last_name
+  .control-group
+    .controls
+      = f.submit submit_text, class: "btn btn-primary btn-small"
