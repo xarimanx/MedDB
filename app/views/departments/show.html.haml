@@ -12,3 +12,5 @@
 
   %li
     = link_to "Add subdivision", new_department_subdivision_path(@department), class: "btn btn-primary btn-small"
+
+= link_to "Back", hospital_path(@department.hospital)

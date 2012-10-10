@@ -5,7 +5,9 @@
 %ul
   - @subdivision.rooms.each do |room|
     %li
-      = link_to room.name, subdivision_room_path(@subdivision, room)
+      = link_to room.number, subdivision_room_path(@subdivision, room)
 
   %li
     = link_to "Add room", new_subdivision_room_path(@subdivision), class: "btn btn-primary btn-small"
+
+= link_to "Back", hospital_department_path(@subdivision.department.hospital, @subdivision.department)
