@@ -8,7 +8,7 @@
 %ul
   - @department.subdivisions.each do |subdivision|
     %li
-      = link_to subdivision.name, department_subdivision_path(subdivision)
+      = link_to subdivision.name, department_subdivision_path(@department, subdivision)
 
   %li
     = link_to "Add subdivision", new_department_subdivision_path(@department), class: "btn btn-primary btn-small"

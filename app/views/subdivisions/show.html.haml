@@ -1,3 +1,11 @@
 %h1
   = @subdivision.name
   = link_to "Edit", edit_department_subdivision_path(@subdivision.department, @subdivision), class: "btn btn-info btn-small"
+
+%ul
+  - @subdivision.rooms.each do |room|
+    %li
+      = link_to room.name, subdivision_room_path(@subdivision, room)
+
+  %li
+    = link_to "Add room", new_subdivision_room_path(@subdivision), class: "btn btn-primary btn-small"

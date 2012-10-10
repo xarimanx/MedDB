@@ -8,6 +8,10 @@ MedDb::Application.routes.draw do
   resources :departments, only: [:index, :show] do
     resources :subdivisions
   end
+  resources :subdivisions, only: [:index, :show] do
+    resources :rooms
+  end
+  resources :rooms, only: [:index, :show]
 
   root :to => 'dashboard#show'
 end

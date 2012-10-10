@@ -6,6 +6,6 @@
 %ul
   - @hospital.departments.each do |department|
     %li
-      = link_to department.name, hospital_department_path(department)
+      = link_to department.name, hospital_department_path(@hospital, department)
   %li
     = link_to "Add department", new_hospital_department_path(@hospital), class: "btn btn-primary btn-small"

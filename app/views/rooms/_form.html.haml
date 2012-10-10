@@ -1,0 +1,9 @@
+= form_for [ room.subdivision, room ], html: { class: "form-horizontal" } do |f|
+  = f.error_messages
+  .control-group
+    = f.label :number, class: "control-label"
+    .controls
+      = f.text_field :number
+  .control-group
+    .controls
+      = f.submit submit_text, class: "btn btn-primary btn-small"
