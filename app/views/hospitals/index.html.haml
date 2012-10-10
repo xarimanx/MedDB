@@ -1,0 +1,8 @@
+%h1
+  Hospitals
+%ul
+  - @hospitals.each do |hospital|
+    %li
+      = link_to hospital.name, hospital_path(hospital)
+  %li
+    = link_to "Add hospital", new_hospital_path, class: "btn btn-primary btn-small"

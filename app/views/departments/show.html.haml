@@ -1,3 +1,14 @@
 %h1
   = @department.name
   = link_to "Edit", edit_hospital_department_path(@department.hospital, @department), class: "btn btn-info btn-small"
+
+%h2
+  Subdivisions
+
+%ul
+  - @department.subdivisions.each do |subdivision|
+    %li
+      = link_to subdivision.name, department_subdivision_path(subdivision)
+
+  %li
+    = link_to "Add subdivision", new_department_subdivision_path(@department), class: "btn btn-primary btn-small"

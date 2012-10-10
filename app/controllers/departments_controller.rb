@@ -1,4 +1,5 @@
 class DepartmentsController < ApplicationController
+  before_filter :find_hospital
   before_filter :find_department, except: [ :new, :create ]
 
   def index

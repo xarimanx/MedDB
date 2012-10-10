@@ -1,5 +1,9 @@
 class HospitalsController < ApplicationController
-  before_filter :find_hospital, except: [ :new, :create ]
+  before_filter :find_hospital, except: [ :index, :new, :create ]
+
+  def index
+    @hospitals = Hospital.all
+  end
 
   def show
   end
